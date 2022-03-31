@@ -1,34 +1,46 @@
-let contact = prompt("Introduce un contacto");
-
+//*añadir un nuevo contacto a una lista
+function addContact() {
+  const newContact = {
+    id: contadorId++,
+    nombres: prompt("Introduce tu nombre"),
+    apellido: prompt("Introduce tu apellido"),
+    telefono: prompt("Introduce tu telefono"),
+    ubicaciones: [
+      prompt("Introduce tu ciudad"),
+      prompt("Introduce tu direccion"),
+    ],
+  };
+  contactName.push(newContact);
+}
+//ejecucion empieza aqui pa abajo
+let contadorId = 1;
 let contactName = [
-  "David Cabrera",
-  "Santiago Martinez",
-  "Jose Gonzalez",
-  "Colin Campbell",
+  {
+    id: contadorId++,
+    nombres: "Tomas",
+    apellido: "Gomez",
+    telefono: 320,
+    ubicaciones: ["Bogota", "Calle 100"],
+  },
+  {
+    id: contadorId++,
+    nombres: "Carol",
+    apellido: "Garcia",
+    telefono: 315,
+    ubicaciones: ["Bogota", "Calle 94"],
+  },
 ];
 
-addContact(contactName);
+console.log(contactName);
+addContact();
+console.log(contactName);
 
-function addContact(contactName) {
-  let newContact = contactName.push(contact);
-}
-alert(contactName);
+//borrar un contacto existente de la lista
+alert("Borrar Contacto");
+const deleteContact = (function () {
+  const numeroId = prompt("Introducir id");
 
-let contactToDelete;
-function borrarContacto(contactToDelete) {
-  for (i = 0; i <= contactName.length - 1; i++) {
-    if (contactName[i] == contactToDelete) {
-      contactName.splice(i, 1);
-    }
-  }
-  return contactName;
-}
-
-alert("Elimina Contacto");
-alert(borrarContacto(prompt(contactToDelete)));
-
-function printList() {
-  const newPrint = console.log(contactName);
-}
-printList(contactName);
-alert(contactName);
+  contactName = contactName.filter((contact) => {
+    contact.id != numeroId;
+  });
+})();
